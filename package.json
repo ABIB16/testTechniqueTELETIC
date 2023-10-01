@@ -1,7 +1,7 @@
 {
-    "name": "sakai-ng",
+    "name": "test-technique-teletic",
     "version": "16.0.0",
-    "license": "PrimeNG Commercial",
+    "license": "ABIB Billel",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
