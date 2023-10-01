@@ -77,25 +77,6 @@ export class EditCandidatureComponent implements OnInit {
             return;
         }
 
-        if (!this.addEditMode) {
-
-            this.candidatureService.createCandidature(this.candidatureForm.value).subscribe({
-                next: (val: any) => {
-                    this.messageService.add({
-                        severity: 'success',
-                        summary: 'Information',
-                        detail: 'Votre candidature à été créé avec succès',
-                        life: 3000
-                    });
-                    this.candidatureForm.reset();
-                    this.isSubmitted = false;
-                },
-                error: (err: any) => {
-                    console.error(err);
-                },
-            });
-
-        } else {
             this.candidatureService.updateCandidature(this.currentCandidatureId, this.candidatureForm.value).subscribe({
                 next: (val: any) => {
                     this.messageService.add({
@@ -109,7 +90,6 @@ export class EditCandidatureComponent implements OnInit {
                     console.error(err);
                 },
             });
-        }
     }
 
 
