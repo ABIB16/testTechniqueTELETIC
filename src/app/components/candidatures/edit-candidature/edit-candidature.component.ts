@@ -84,7 +84,7 @@ export class EditCandidatureComponent implements OnInit {
                     this.messageService.add({
                         severity: 'success',
                         summary: 'Information',
-                        detail: 'La candidature de  ' + this.candidatureForm.value.nomCandidat + ' à été créé avec succès',
+                        detail: 'Votre candidature à été créé avec succès',
                         life: 3000
                     });
                     this.candidatureForm.reset();
