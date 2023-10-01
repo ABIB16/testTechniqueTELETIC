@@ -1,0 +1,82 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success mr-2"
+                            routerLink="add"></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [value]="users" responsiveLayout="scroll" [rows]="10"
+                     [globalFilterFields]="['nomUtilisateur','nom','prenom','typeUtilisateur','']" [paginator]="true"
+                     [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" [rowHover]="true" dataKey="id">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+                        <h5 class="m-0">Liste des utilisateurs</h5>
+                        <span class="block mt-2 md:mt-0 p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="onGlobalFilter(dt, $event)"
+                                   placeholder="Rechercher ..." class="w-full sm:w-auto"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 600px">Login</th>
+                        <th style="width: 700px;">Nom</th>
+                        <th style="width: 700px;">Prénom</th>
+                        <th style="width: 700px">N° Tel</th>
+                        <th style="width: 300px;">Type</th>
+                        <th style="width: 10px;">Options</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-utilisateur>
+                    <tr>
+                        <td>
+                            {{utilisateur.nomUtilisateur}}
+                        </td>
+                        <td>
+                            {{utilisateur.nom}}
+                        </td>
+                        <td>
+                            {{utilisateur.prenom}}
+                        </td>
+                        <td>
+                            {{utilisateur.numeroTelephone}}
+                        </td>
+                        <td>
+                            {{utilisateur.typeUtilisateur}}
+                        </td>
+                        <td>
+                            <div class="flex">
+                                <button *ngIf="user.nomUtilisateur === utilisateur.nomUtilisateur" pButton pRipple
+                                        icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                                        [routerLink]="['edit',utilisateur.id]"></button>
+                                <button *ngIf="user.nomUtilisateur === utilisateur.nomUtilisateur" pButton pRipple
+                                        icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                                        (click)="delete(utilisateur.id,user)"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+        <p-dialog [(visible)]="deleteProductDialog" header="Confirmation" [modal]="true" [style]="{width:'450px'}">
+            <div class="flex align-items-center justify-content-center">
+                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                <span
+                    *ngIf="user">Voulez vous vraiment supprimer l'utilisateur <b>{{user.nom}} {{user.prenom}}</b> ?</span>
+            </div>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No"
+                        (click)="deleteProductDialog = false"></button>
+                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes"
+                        (click)="confirmDelete()"></button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>

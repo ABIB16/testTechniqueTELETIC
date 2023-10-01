@@ -1,0 +1,35 @@
+<p-toast></p-toast>
+<form [formGroup]="candidatureForm" class="form-field-full">
+    <div class="grid">
+        <div class="col-12 md:col-8">
+            <div class="card p-fluid">
+                <h5>{{addEditMode? 'Modifier candidature' : 'Nouvelle candidature'}}</h5>
+                <div class="field">
+                    <label htmlFor="name1">Nom candidat *</label>
+                    <input pInputText  type="text"  [readonly]="true" [value]="candidatureForm.get('userId')?.value?.nom+' ' +candidatureForm.get('userId')?.value?.prenom" />
+                </div>
+                <div class="field">
+                    <label htmlFor="name1">poste *</label>
+                    <input pInputText [readonly]="true" type="text" formControlName="poste"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="email1">CV</label>
+                    <input pInputText [readonly]="true" type="text" formControlName="cv"/>
+                </div>
+                <div *ngIf="this.user.typeUtilisateur === 'Recruteur'" class="field">
+                    <label htmlFor="age1">Etat *</label>
+                    <p-dropdown
+                        autoWidth="false" [style]="{'width':'100%'}"
+                        [options]='[{etat: "En attente"}, {etat: "En cours"},{etat: "Acceptée"},{etat: "Rejetée"} ]'
+                        optionLabel="etat"
+                        formControlName="etat"
+                        optionValue="etat"
+                        [showClear]="false"
+                        placeholder="Sélectionner">
+                    </p-dropdown>
+                </div>
+                <button pButton label="Valider" style="width: 100px" type="button" (click)="onSubmit()"></button>
+            </div>
+        </div>
+    </div>
+</form>

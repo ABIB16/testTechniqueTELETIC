@@ -1,0 +1,72 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+            <p-toolbar *ngIf="user.typeUtilisateur === 'Employé'" styleClass="mb-4">
+                <ng-template pTemplate="left">
+                        <button  pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success mr-2" routerLink="add" ></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [value]="candidatures"  responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['nomCandidat','poste','etat']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true"   [rowHover]="true" dataKey="id">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+                        <h5 class="m-0">Liste des candidatures</h5>
+                        <span class="block mt-2 md:mt-0 p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Rechercher ..."  class="w-full sm:w-auto"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 400px;" *ngIf="user.typeUtilisateur === 'Recruteur'" pSortableColumn="code">Nom candidat</th>
+                        <th style="width: 550px;">Poste</th>
+                        <th style="width: 250px;">Date d'envoi</th>
+                        <th style="width: 300px;">CV</th>
+                        <th style="width: 150px;">Etat</th>
+                        <th *ngIf="user.typeUtilisateur === 'Recruteur'" pSortableColumn="statut">Options</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-candidature>
+                    <tr>
+                        <td *ngIf="user.typeUtilisateur === 'Recruteur'">
+                            {{candidature.userId.nom+" "+candidature.userId.prenom}}
+                        </td>
+                        <td>
+                            {{candidature.poste}}
+                        </td>
+                        <td>
+                            {{candidature.dateSoumission}}
+                        </td>
+                        <td>
+                            {{candidature.cv}}
+                        </td>
+                        <td>
+                            {{candidature.etat}}
+                        </td>
+                        <td *ngIf="user.typeUtilisateur === 'Recruteur'">
+                            <div class="flex">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" [routerLink]="['edit',candidature.id]"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(candidature.id,candidature)"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+
+        <p-dialog [(visible)]="deleteProductDialog" header="Confirmation" [modal]="true" [style]="{width:'450px'}">
+            <div class="flex align-items-center justify-content-center">
+                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                <span *ngIf="candidature">Voulez les vous vraiment supprimer la candidature de  <b>{{candidature.userId.nom +" "+candidature.userId.prenom}}</b> ?</span>
+            </div>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="Non" (click)="deleteProductDialog = false"></button>
+                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Oui" (click)="confirmDelete()"></button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>

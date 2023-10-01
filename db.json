@@ -1,0 +1,40 @@
+{
+  "userData": [
+    {
+      "nomUtilisateur": "user",
+      "motDePasse": "1234",
+      "nom": "ABIB",
+      "prenom": "Billel",
+      "numeroTelephone": "06 55 98 52 33",
+      "typeUtilisateur": "Employé",
+      "id": 1
+    },
+    {
+      "nomUtilisateur": "admin",
+      "motDePasse": "admin",
+      "nom": "TELETIC",
+      "prenom": "teletic",
+      "numeroTelephone": "05-45-78-91-54",
+      "typeUtilisateur": "Recruteur",
+      "id": 2
+    }
+  ],
+  "candidatureData": [
+    {
+      "userId": {
+        "nomUtilisateur": "user",
+        "motDePasse": "1234",
+        "nom": "ABIB",
+        "prenom": "Billel",
+        "numeroTelephone": "06 55 98 52 33",
+        "typeUtilisateur": "Employé",
+        "id": 1
+      },
+      "poste": "Ingénieur de Développement FullStack Spring boot, Angular",
+      "dateSoumission": "01-10-2023",
+      "etat": "En attente",
+      "cv": "CV ABIB BILLEL.pdf",
+      "id": 1
+    }
+  ]
+}

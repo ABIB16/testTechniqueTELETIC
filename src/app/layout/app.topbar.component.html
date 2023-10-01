@@ -1,0 +1,17 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo">
+        <img src="assets/layout/images/logo.png" alt="logo">
+        <span>TELETIC</span>
+    </a>
+
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+
+        <a class="layout-topbar-logo">
+            <span style="color: #0b7ad1">{{ fullname }}</span>
+        </a>
+        <button class="p-link layout-topbar-button" (click)="disconnect()">
+            <i class="pi pi-user"></i>
+        </button>
+    </div>
+</div>

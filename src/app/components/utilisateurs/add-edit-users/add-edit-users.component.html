@@ -1,0 +1,64 @@
+<p-toast></p-toast>
+<form [formGroup]="inscriptionForm" class="form-field-full">
+<div class="grid">
+    <div class="col-12 md:col-7">
+        <div class="card p-fluid">
+            <h5>{{addEditMode? 'Modifier formulaire d\'inscription' : 'Formulaire d\'inscription'}}</h5>
+            <div class="field">
+                <label htmlFor="name1">Login *</label>
+                <input pInputText  type="text"  formControlName="nomUtilisateur"/>
+                <div *ngIf="validationForm['nomUtilisateur'].invalid && isSubmitted;" class="p-error">
+                    Veuillez saisir un login
+                </div>
+            </div>
+            <div class="field">
+                <label htmlFor="name1">Mot de passe *</label>
+                <input pInputText  type="text" formControlName="motDePasse"/>
+                <div *ngIf="validationForm['motDePasse'].invalid && isSubmitted;" class="p-error">
+                    Veuillez saisir un mot de passe
+                </div>
+            </div>
+            <div class="field">
+                <label htmlFor="email1">Nom *</label>
+                <input pInputText  type="text" formControlName="nom" />
+                <div *ngIf="validationForm['nom'].invalid && isSubmitted;" class="p-error">
+                    Veuillez saisir un nom
+                </div>
+            </div>
+            <div class="field">
+                <label htmlFor="age1">Prénom *</label>
+                <input pInputText  type="text"  formControlName="prenom"/>
+                <div *ngIf="validationForm['prenom'].invalid && isSubmitted;" class="p-error">
+                    Veuillez saisir un prénom
+                </div>
+            </div>
+            <div class="field">
+                <label htmlFor="age1">N° Tel *</label>
+                <p-inputMask mask="99-99-99-99-99" styleClass="w-full" formControlName="numeroTelephone"></p-inputMask>
+                <div *ngIf="validationForm['numeroTelephone'].invalid && isSubmitted;" class="p-error">
+                Veuillez saisir un numéro de tel
+            </div>
+
+            </div>
+            <div class="field">
+                <label htmlFor="age1">Type utilisateur *</label>
+                <p-dropdown
+                    autoWidth="false" [style]="{'width':'100%'}"
+                    [options]='[{typeUtilisateur: "Employé"}, {typeUtilisateur: "Recruteur"} ]'
+                    optionLabel="typeUtilisateur"
+                    formControlName="typeUtilisateur"
+                    optionValue="typeUtilisateur"
+                    [showClear]="false"
+                    placeholder="Sélectionner">
+                </p-dropdown>
+                <div *ngIf="validationForm['typeUtilisateur'].invalid && isSubmitted;" class="p-error">
+                    Veuillez sélectionner un type utilisateur
+                </div>
+            </div>
+            <div >
+            <button pButton label="Valider" style="width: 100px" type="button" (click)="onSubmit()"></button>
+        </div>
+        </div>
+    </div>
+</div>
+</form>
