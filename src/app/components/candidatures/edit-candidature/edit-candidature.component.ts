@@ -82,7 +82,7 @@ export class EditCandidatureComponent implements OnInit {
                     this.messageService.add({
                         severity: 'success',
                         summary: 'Information',
-                        detail: 'La candidature  ' + this.candidatureForm.value.userId.nom" "+this.candidatureForm.value.userId.prenom + ' à été modifiée avec succès',
+                        detail: 'La candidature  ' + this.candidatureForm.value.userId.nom+" "+this.candidatureForm.value.userId.prenom + ' à été modifiée avec succès',
                         life: 3000
                     });
                 },
