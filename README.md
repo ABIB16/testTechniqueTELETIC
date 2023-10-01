@@ -1,3 +1,3 @@
 **Environement de développement**
 
-*- IDE : IntelliJ IDEA 
+- IDE : IntelliJ IDEA 
