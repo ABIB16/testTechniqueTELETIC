@@ -61,8 +61,6 @@ export class AddCandidatureComponent implements OnInit {
             return;
         }
 
-        if (!this.addEditMode) {
-
             this.candidatureService.createCandidature(this.candidatureForm.value).subscribe({
                 next: (val: any) => {
                     this.messageService.add({
@@ -78,22 +76,6 @@ export class AddCandidatureComponent implements OnInit {
                     console.error(err);
                 },
             });
-
-        } else {
-            this.candidatureService.updateCandidature(this.currentCandidatureId, this.candidatureForm.value).subscribe({
-                next: (val: any) => {
-                    this.messageService.add({
-                        severity: 'success',
-                        summary: 'Information',
-                        detail: 'La candidature  ' + this.candidatureForm.value.nom + '  ' + this.candidatureForm.value.prenom + ' à été modifié avec succès',
-                        life: 3000
-                    });
-                },
-                error: (err: any) => {
-                    console.error(err);
-                },
-            });
-        }
     }
 
     viderChamps() {
