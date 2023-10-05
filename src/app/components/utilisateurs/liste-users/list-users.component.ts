@@ -12,7 +12,6 @@ export class ListUsersComponent implements OnInit {
     productDialog: boolean = false;
     deleteProductDialog: boolean = false;
     users: User[] = [];
-   // user: User ;
     user = JSON.parse(localStorage.getItem('user')) as User;
 
     currerntUserId : number;

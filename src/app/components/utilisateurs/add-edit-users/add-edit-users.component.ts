@@ -20,7 +20,8 @@ export class AddEditUsersComponent implements OnInit {
     constructor(private fb: FormBuilder,
                 private userService: UserService,
                 private messageService: MessageService,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private router : Router) {
 
     }
 
@@ -115,7 +116,7 @@ export class AddEditUsersComponent implements OnInit {
                                         console.error(err);
                                     },
                                 });
-                             //   window.history.back();
+                                this.router.navigate(['/dashboard/utilisateurs/liste-users']);
                             }
                         }
                     },
@@ -147,7 +148,7 @@ export class AddEditUsersComponent implements OnInit {
                             console.error(err);
                         },
                     });
-                 //   window.history.back();
+                    this.router.navigate(['/dashboard/utilisateurs/liste-users']);
                 }
             }
         }

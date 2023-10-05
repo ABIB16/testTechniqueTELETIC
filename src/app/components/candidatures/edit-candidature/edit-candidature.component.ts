@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MessageService} from "primeng/api";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../service/user.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CandidatureService} from "../../../service/candidature.service";
 import {DatePipe} from "@angular/common";
 import {User} from "../../../model/user";
@@ -24,7 +24,8 @@ export class EditCandidatureComponent implements OnInit {
                 private candidatureService: CandidatureService,
                 private messageService: MessageService,
                 private datePipe: DatePipe,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private  router :Router) {
 
     }
 
@@ -90,7 +91,7 @@ export class EditCandidatureComponent implements OnInit {
                 console.error(err);
             },
         });
-     //   window.history.back();
+        this.router.navigate(['/dashboard/candidatures/liste-candidatures']);
     }
 
 
