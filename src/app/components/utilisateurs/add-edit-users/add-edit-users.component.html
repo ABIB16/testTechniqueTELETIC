@@ -13,9 +13,18 @@
             </div>
             <div class="field">
                 <label htmlFor="name1">Mot de passe *</label>
-                <input pInputText  type="text" formControlName="motDePasse"/>
+                <p-password [feedback]="false" id="password" formControlName="motDePasse" placeholder="Password" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
+
                 <div *ngIf="validationForm['motDePasse'].invalid && isSubmitted;" class="p-error">
                     Veuillez saisir un mot de passe
+                </div>
+            </div>
+            <div class="field">
+                <label htmlFor="name1">Confirmation mot de passe *</label>
+                <p-password [feedback]="false" id="password" formControlName="confirmMdp" placeholder="Password" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
+
+                <div *ngIf="validationForm['confirmMdp'].invalid && isSubmitted;" class="p-error">
+                    Veuillez saisir confirmation du mot de passe
                 </div>
             </div>
             <div class="field">

@@ -77,19 +77,20 @@ export class EditCandidatureComponent implements OnInit {
             return;
         }
 
-            this.candidatureService.updateCandidature(this.currentCandidatureId, this.candidatureForm.value).subscribe({
-                next: (val: any) => {
-                    this.messageService.add({
-                        severity: 'success',
-                        summary: 'Information',
-                        detail: 'La candidature  ' + this.candidatureForm.value.userId.nom+" "+this.candidatureForm.value.userId.prenom + ' à été modifiée avec succès',
-                        life: 3000
-                    });
-                },
-                error: (err: any) => {
-                    console.error(err);
-                },
-            });
+        this.candidatureService.updateCandidature(this.currentCandidatureId, this.candidatureForm.value).subscribe({
+            next: (val: any) => {
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Information',
+                    detail: 'La candidature  ' + this.candidatureForm.value.userId.nom + " " + this.candidatureForm.value.userId.prenom + ' à été modifiée avec succès',
+                    life: 3000
+                });
+            },
+            error: (err: any) => {
+                console.error(err);
+            },
+        });
+     //   window.history.back();
     }
 
 

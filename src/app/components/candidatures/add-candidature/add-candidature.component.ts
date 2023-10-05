@@ -76,6 +76,7 @@ export class AddCandidatureComponent implements OnInit {
                     console.error(err);
                 },
             });
+        //window.history.back();
     }
 
     viderChamps() {
@@ -85,7 +86,6 @@ export class AddCandidatureComponent implements OnInit {
     onFileSelect(event: any) {
         if (event.files.length > 0) {
             this.candidatureForm.value.cv = event.files[0].name;
-            console.log("rrrr "+this.candidatureForm.value.cv)
         }
     }
 

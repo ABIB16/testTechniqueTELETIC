@@ -18,10 +18,7 @@ import {AuthService} from "../../../service/authService";
 })
 export class LoginComponent implements OnInit{
 
-    valCheck: string[] = ['remember'];
-
     password!: string;
-
     loginForm: FormGroup;
 
     constructor(public layoutService: LayoutService,
